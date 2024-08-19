@@ -1,0 +1,90 @@
+﻿@model RolesMV
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="app-content content ">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper container-xxl p-0">
+        <div class="content-header row">
+        </div>
+        <div class="content-body">
+            <h3>Roles List for - @Model.Type</h3>
+            <div class="row">
+                <div class="col-md-10">
+                    <p class="mb-2">
+                        A role provided access to predefined menus and features so that depending <br />
+                        on assigned role an administrator can have access to what he need
+                    </p>
+                </div>
+                <div class="col-md-2 text-start">
+                        <a href="javascript:void(0)" data-bs-target="#addRoleModal" data-bs-toggle="modal" class="w-100" onclick="Roles.OpenEditRoleModal(0,'','@Model.Type');" >
+                            <span class="btn btn-primary w-100">Add New Role</span>
+                        </a>
+                </div>
+
+            </div>
+            <!-- Role cards -->
+            <div class="row">
+                @foreach (var role in Model.Roles)
+                {
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <span>Total 4 users</span>
+                                    <ul class="list-unstyled d-flex align-items-center avatar-group mb-0">
+                                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" title="Vinnie Mostowy" class="avatar avatar-sm pull-up">
+                                            <img class="rounded-circle" src="~/App/app-assets/images/avatars/2.png" alt="Avatar" />
+                                        </li>
+                                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" title="Allen Rieske" class="avatar avatar-sm pull-up">
+                                            <img class="rounded-circle" src="~/App/app-assets/images/avatars/12.png" alt="Avatar" />
+                                        </li>
+                                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" title="Julee Rossignol" class="avatar avatar-sm pull-up">
+                                            <img class="rounded-circle" src="~/App/app-assets/images/avatars/6.png" alt="Avatar" />
+                                        </li>
+                                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" title="Kaith D'souza" class="avatar avatar-sm pull-up">
+                                            <img class="rounded-circle" src="~/App/app-assets/images/avatars/11.png" alt="Avatar" />
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-end mt-1 pt-25">
+                                    <div class="role-heading">
+                                        <h4 class="fw-bolder">@role.Name</h4>
+                                        <a href="javascript:void(0);" class="role-edit-modal" data-bs-toggle="modal" data-bs-target="#addRoleModal" onclick="Roles.OpenEditRoleModal(@role.Id,'@role.Name','@Model.Type');">
+                                            <small class="fw-bolder">Edit Role</small>
+                                        </a>
+                                    </div>
+                                    <a href="javascript:void(0);" class="text-body"><i data-feather="copy" class="font-medium-5"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <!-- Add Role Modal -->
+                <div class="modal fade" id="addRoleModal" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered modal-add-new-role">
+                        <div class="modal-content">
+                            <div class="modal-header bg-transparent">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body px-5 pb-5" id="addEditRolePermissions">
+                                
+                                <!--/ Add role form -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/ Add Role Modal -->
+
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/customejs/admin/Roles.js"></script>
+  }
+
