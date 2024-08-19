@@ -18,8 +18,8 @@ namespace AuthAppBusiness.Constants
         Dashboard = 1
 
     }
-    public enum Patient_Pages { 
-    
+    public enum Patient_Pages {
+        Dashboard = 1
     }
 
     public enum Operations
